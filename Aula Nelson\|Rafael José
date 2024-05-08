@@ -1,0 +1,46 @@
+import tkinter as tk
+
+def converter():
+  try:
+    real = float(entrada_real.get())
+    cad = real * cotacao_cad
+    won = cad * cotacao_won
+    resultado_cad.config(text=f"CAD {cad:.2f}")
+    resultado_won.config(text=f"KRW {won:.2f}")
+  except ValueError:
+    resultado_cad.config(text="Valor inválido")
+    resultado_won.config(text="Valor inválido")
+
+#-------------------------------------------------------------
+
+cotacao_cad = 0.27  
+cotacao_won = 950   
+
+#-------------------------------------------------------------
+
+janela = tk.Tk()
+janela.title("Conversor de Moedas")
+
+#-------------------------------------------------------------
+
+texto_real = tk.Label(janela, text="Valor em Real (BRL):")
+entrada_real = tk.Entry(janela)
+botao_converter = tk.Button(janela, text="Converter", command=converter)
+texto_cad = tk.Label(janela, text="Valor em Dólar Canadense:")
+resultado_cad = tk.Label(janela, text="")
+texto_won = tk.Label(janela, text="Valor em Won Coreano:")
+resultado_won = tk.Label(janela, text="")
+
+#-------------------------------------------------------------
+
+texto_real.grid(row=0, column=0, padx=5, pady=5)
+entrada_real.grid(row=0, column=1, padx=5, pady=5)
+botao_converter.grid(row=1, column=0, columnspan=2, padx=5, pady=5)
+texto_cad.grid(row=2, column=0, padx=5, pady=5)
+resultado_cad.grid(row=2, column=1, padx=5, pady=5)
+texto_won.grid(row=3, column=0, padx=5, pady=5)
+resultado_won.grid(row=3, column=1, padx=5, pady=5)
+
+#-------------------------------------------------------------
+
+janela.mainloop()
